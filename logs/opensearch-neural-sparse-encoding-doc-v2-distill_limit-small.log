@@ -1,32 +1,32 @@
-2025-08-31 23:54:13 - Use pytorch device_name: cuda:0
-2025-08-31 23:54:13 - Load pretrained SparseEncoder: opensearch-project/opensearch-neural-sparse-encoding-doc-v2-distill
-Corpus encoding time: 0.2858 seconds
-Query encoding time: 0.2223 seconds
-2025-08-31 23:54:15 - For evaluation, we ignore identical query and document ids (default), please explicitly set ``ignore_identical_ids=False`` to ignore this.
-2025-08-31 23:54:15 - 
+2025-09-01 13:52:10 - Use pytorch device_name: cuda:0
+2025-09-01 13:52:10 - Load pretrained SparseEncoder: opensearch-project/opensearch-neural-sparse-encoding-doc-v2-distill
+Corpus encoding time: 0.2805 seconds
+Query encoding time: 0.2125 seconds
+2025-09-01 13:52:12 - For evaluation, we ignore identical query and document ids (default), please explicitly set ``ignore_identical_ids=False`` to ignore this.
+2025-09-01 13:52:12 - 
 
-2025-08-31 23:54:15 - NDCG@2: 0.8263
-2025-08-31 23:54:15 - NDCG@10: 0.8991
-2025-08-31 23:54:15 - NDCG@20: 0.9056
-2025-08-31 23:54:15 - NDCG@100: 0.9122
-2025-08-31 23:54:15 - 
+2025-09-01 13:52:12 - NDCG@2: 0.8263
+2025-09-01 13:52:12 - NDCG@10: 0.8991
+2025-09-01 13:52:12 - NDCG@20: 0.9056
+2025-09-01 13:52:12 - NDCG@100: 0.9122
+2025-09-01 13:52:12 - 
 
-2025-08-31 23:54:15 - MAP@2: 0.8037
-2025-08-31 23:54:15 - MAP@10: 0.8655
-2025-08-31 23:54:15 - MAP@20: 0.8681
-2025-08-31 23:54:15 - MAP@100: 0.8697
-2025-08-31 23:54:15 - 
+2025-09-01 13:52:12 - MAP@2: 0.8037
+2025-09-01 13:52:12 - MAP@10: 0.8655
+2025-09-01 13:52:12 - MAP@20: 0.8681
+2025-09-01 13:52:12 - MAP@100: 0.8697
+2025-09-01 13:52:12 - 
 
-2025-08-31 23:54:15 - Recall@2: 0.8170
-2025-08-31 23:54:15 - Recall@10: 0.9530
-2025-08-31 23:54:15 - Recall@20: 0.9735
-2025-08-31 23:54:15 - Recall@100: 1.0000
-2025-08-31 23:54:15 - 
+2025-09-01 13:52:12 - Recall@2: 0.8170
+2025-09-01 13:52:12 - Recall@10: 0.9530
+2025-09-01 13:52:12 - Recall@20: 0.9735
+2025-09-01 13:52:12 - Recall@100: 1.0000
+2025-09-01 13:52:12 - 
 
-2025-08-31 23:54:15 - P@2: 0.8170
-2025-08-31 23:54:15 - P@10: 0.1906
-2025-08-31 23:54:15 - P@20: 0.0974
-2025-08-31 23:54:15 - P@100: 0.0200
+2025-09-01 13:52:12 - P@2: 0.8170
+2025-09-01 13:52:12 - P@10: 0.1906
+2025-09-01 13:52:12 - P@20: 0.0974
+2025-09-01 13:52:12 - P@100: 0.0200
 NDCG@10: 0.8991
 Recall@2: 0.8170
 Recall@10: 0.9530

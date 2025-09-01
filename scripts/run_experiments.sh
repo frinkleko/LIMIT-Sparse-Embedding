@@ -1,10 +1,10 @@
 #!/bin/bash
 
 MODELS=(
-  # "opensearch-project/opensearch-neural-sparse-encoding-doc-v1"
+  "opensearch-project/opensearch-neural-sparse-encoding-doc-v1"
   "opensearch-project/opensearch-neural-sparse-encoding-doc-v2-distill"
-  # "opensearch-project/opensearch-neural-sparse-encoding-doc-v3-distill"
-  # "opensearch-project/opensearch-neural-sparse-encoding-doc-v3-gte"
+  "opensearch-project/opensearch-neural-sparse-encoding-doc-v3-distill"
+  "opensearch-project/opensearch-neural-sparse-encoding-doc-v3-gte"
 )
 
 DATASETS=("limit-small" "limit")

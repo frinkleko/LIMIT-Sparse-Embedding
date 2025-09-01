@@ -1,0 +1,34 @@
+2025-09-01 13:59:01 - Use pytorch device_name: cuda:0
+2025-09-01 13:59:01 - Load pretrained SparseEncoder: opensearch-project/opensearch-neural-sparse-encoding-doc-v3-gte
+Corpus encoding time: 170.1867 seconds
+Query encoding time: 0.1920 seconds
+2025-09-01 14:02:10 - For evaluation, we ignore identical query and document ids (default), please explicitly set ``ignore_identical_ids=False`` to ignore this.
+2025-09-01 14:02:10 - 
+
+2025-09-01 14:02:10 - NDCG@2: 0.3888
+2025-09-01 14:02:10 - NDCG@10: 0.5000
+2025-09-01 14:02:10 - NDCG@20: 0.5259
+2025-09-01 14:02:10 - NDCG@100: 0.5546
+2025-09-01 14:02:10 - 
+
+2025-09-01 14:02:10 - MAP@2: 0.3613
+2025-09-01 14:02:10 - MAP@10: 0.4416
+2025-09-01 14:02:10 - MAP@20: 0.4511
+2025-09-01 14:02:10 - MAP@100: 0.4561
+2025-09-01 14:02:10 - 
+
+2025-09-01 14:02:10 - Recall@2: 0.3870
+2025-09-01 14:02:10 - Recall@10: 0.6090
+2025-09-01 14:02:10 - Recall@20: 0.6920
+2025-09-01 14:02:10 - Recall@100: 0.8180
+2025-09-01 14:02:10 - 
+
+2025-09-01 14:02:10 - P@2: 0.3870
+2025-09-01 14:02:10 - P@10: 0.1218
+2025-09-01 14:02:10 - P@20: 0.0692
+2025-09-01 14:02:10 - P@100: 0.0164
+NDCG@10: 0.5000
+Recall@2: 0.3870
+Recall@10: 0.6090
+Recall@20: 0.6920
+Recall@100: 0.8180
