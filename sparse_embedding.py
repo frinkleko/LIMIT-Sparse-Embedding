@@ -9,16 +9,30 @@ import pathlib
 import time
 
 #### Just some code to print debug information to stdout
-logging.basicConfig(format='%(asctime)s - %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S',
-                    level=logging.INFO,
-                    handlers=[LoggingHandler()])
+logging.basicConfig(
+    format="%(asctime)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    level=logging.INFO,
+    handlers=[LoggingHandler()],
+)
 
 import argparse
 
-parser = argparse.ArgumentParser(description='Evaluate a sparse retrieval model on the LIMIT dataset.')
-parser.add_argument('--dataset', type=str, default='limit-small', help='Name of the dataset to use (e.g., limit-small or limit)')
-parser.add_argument('--model', type=str, default='opensearch-project/opensearch-neural-sparse-encoding-doc-v3-gte', help='Name of the sparse model to use from Hugging Face.')
+parser = argparse.ArgumentParser(
+    description="Evaluate a sparse retrieval model on the LIMIT dataset."
+)
+parser.add_argument(
+    "--dataset",
+    type=str,
+    default="limit-small",
+    help="Name of the dataset to use (e.g., limit-small or limit)",
+)
+parser.add_argument(
+    "--model",
+    type=str,
+    default="opensearch-project/opensearch-neural-sparse-encoding-doc-v3-gte",
+    help="Name of the sparse model to use from Hugging Face.",
+)
 args = parser.parse_args()
 
 dataset = args.dataset
@@ -32,44 +46,55 @@ if not os.path.exists(data_path):
 
 import json
 
+
 # Custom data loading functions
 def load_qrels(path):
     qrels = {}
-    with open(path, 'r') as f:
+    with open(path, "r") as f:
         for line in f:
             row = json.loads(line)
-            query_id = row['query-id']
-            doc_id = row['corpus-id']
-            score = int(row['score'])
+            query_id = row["query-id"]
+            doc_id = row["corpus-id"]
+            score = int(row["score"])
             if query_id not in qrels:
                 qrels[query_id] = {}
             qrels[query_id][doc_id] = score
     return qrels
 
+
 def load_corpus(path):
     corpus = {}
-    with open(path, 'r') as f:
+    with open(path, "r") as f:
         for line in f:
             row = json.loads(line)
-            corpus[row['_id']] = {"title": row.get("title", ""), "text": row.get("text", "")}
+            corpus[row["_id"]] = {
+                "title": row.get("title", ""),
+                "text": row.get("text", ""),
+            }
     return corpus
+
 
 def load_queries(path):
     queries = {}
-    with open(path, 'r') as f:
+    with open(path, "r") as f:
         for line in f:
             row = json.loads(line)
-            queries[row['_id']] = row['text']
+            queries[row["_id"]] = row["text"]
     return queries
+
 
 corpus = load_corpus(os.path.join(data_path, "corpus.jsonl"))
 queries = load_queries(os.path.join(data_path, "queries.jsonl"))
 qrels = load_qrels(os.path.join(data_path, "qrels.jsonl"))
 
-# https://huggingface.co/opensearch-project/opensearch-neural-sparse-encoding-doc-v1 
+# https://huggingface.co/opensearch-project/opensearch-neural-sparse-encoding-doc-v1
 
 if args.model == "opensearch-project/opensearch-neural-sparse-encoding-doc-v3-gte":
-    model = SparseEncoder(args.model, trust_remote_code=True, model_kwargs={"code_revision": "40ced75c3017eb27626c9d4ea981bde21a2662f4"})
+    model = SparseEncoder(
+        args.model,
+        trust_remote_code=True,
+        model_kwargs={"code_revision": "40ced75c3017eb27626c9d4ea981bde21a2662f4"},
+    )
 else:
     model = SparseEncoder(args.model, trust_remote_code=True)
 
@@ -99,7 +124,7 @@ corpus_embeds_t = corpus_embeds.T
 for i in trange(len(query_embeds), desc="Scoring"):
     query_id = query_ids[i]
     query_embed = query_embeds[i].to_dense()
-    
+
     # Compute scores using sparse matrix multiplication
     scores = torch.matmul(query_embed, corpus_embeds_t)
     if isinstance(scores, torch.Tensor):
@@ -107,9 +132,12 @@ for i in trange(len(query_embeds), desc="Scoring"):
 
     # Rank documents
     ranked_doc_indices = scores.argsort()[::-1]
-    
+
     # Store results
-    results[query_id] = {corpus_ids[doc_idx]: float(scores[doc_idx]) for doc_idx in ranked_doc_indices[:100]}
+    results[query_id] = {
+        corpus_ids[doc_idx]: float(scores[doc_idx])
+        for doc_idx in ranked_doc_indices[:100]
+    }
 
 #### Evaluate your model with NDCG@10
 k_values = [2, 10, 20, 100]
