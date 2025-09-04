@@ -96,7 +96,6 @@ def main():
     # --- Experiment Loop ---
     training_amounts = [2, len(all_training_samples)]
     recall_at_10_scores = []
-    final_model = None
 
     for num_samples in training_amounts:
         logging.info(f"--- Training with {num_samples} samples ---")
@@ -187,8 +186,7 @@ def main():
             }
 
         k_values = [2, 10, 20, 100]
-        ndc
-        g, _map, recall, precision = EvaluateRetrieval.evaluate(
+        ndcg, _map, recall, precision = EvaluateRetrieval.evaluate(
             test_qrels, results, k_values
         )
 
@@ -216,9 +214,10 @@ def main():
 
         model.save_pretrained(sample_output_dir)
         logging.info(f"Model saved to {sample_output_dir}")
-
-        if num_samples == training_amounts[-1]:
-            final_model = model
+        model.push_to_hub(
+            f"{args.model.replace('/', '_')}-{args.dataset}-samples-{num_samples}",
+            private=True,
+        )
 
 
 if __name__ == "__main__":

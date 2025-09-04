@@ -70,10 +70,10 @@ We finetuned the `v3-gte` model on 2 training samples and full training data (17
 | Training Samples | NDCG@10 | Recall@2 | Recall@10 | Recall@20 | Recall@100 |
 |------------------|---------|----------|-----------|-----------|------------|
 | 0 (Zero-shot)    | 0.500   | 0.387    | 0.609     | 0.692     | 0.818      |
-| 2                | 0.859   | 0.824    | 0.905     | 0.922     | 0.942      |
-| 1700 (Full)      | 0.918   | 0.905    | 0.931     | 0.938     | 0.963      |  
+| [2](https://huggingface.co/Frinkleko/opensearch-doc-v3-gte-finetune-limit-samples-2)                | 0.859   | 0.824    | 0.905     | 0.922     | 0.942      |
+| [1700 (Full)](https://huggingface.co/Frinkleko/opensearch-doc-v3-gte-finetune-limit-samples-1700/)      | 0.918   | 0.905    | 0.931     | 0.938     | 0.963      |  
 
-Our experiment platform is a machine with 1 NVIDIA A100 GPU. I am uploading the finetuned models to Hugging Face, please stay tuned 😆.
+Our experiment platform is a machine with 1 NVIDIA A100 GPU.
 
 ## Cite
 If you use this code for your research, please cite the following paper:
